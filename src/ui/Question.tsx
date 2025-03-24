@@ -4,15 +4,21 @@ interface QuestionProps {
   question: string;
   options: string[];
   answer: string;
-  onRightAnswer: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onSubmitAnswer: (isRightAnswer: boolean) => void;
 }
 
-function Question({ question, options, answer, onRightAnswer }: QuestionProps) {
+function Question({
+  question,
+  options,
+  answer,
+  onSubmitAnswer,
+}: QuestionProps) {
   function handleChoise(option: string) {
-    if (answer === option) {
-      onRightAnswer();
-    }
+    const isRightAnswer = answer === option;
+    onSubmitAnswer(isRightAnswer);
   }
+
   return (
     <div>
       <p>{question}</p>
