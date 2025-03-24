@@ -14,22 +14,28 @@ function Question({
   answer,
   onSubmitAnswer,
 }: QuestionProps) {
-  function handleChoise(option: string) {
+  function handleChoice(option: string) {
     const isRightAnswer = answer === option;
     onSubmitAnswer(isRightAnswer);
   }
 
   return (
-    <div>
-      <p>{question}</p>
-      <ul>
+    <div className="flex flex-1 flex-col items-center text-center">
+      {/* Adaptive font sizes for the question text */}
+      <p className="mb-4 text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">
+        {question}
+      </p>
+
+      {/* The list of options stretches to fill vertical space.
+      'w-full' ensures each <li> can fill the width within a centered parent. */}
+      <ul className="flex w-full flex-1 flex-col gap-4">
         {options.map((option) => (
           <li
             key={option}
-            onClick={() => handleChoise(option)}
-            className="cursor-poiner"
+            onClick={() => handleChoice(option)}
+            className="cursor-pointerrounded flex-1 items-center bg-[#2A2A2A] p-4 text-center transition-colors hover:bg-gray-700"
           >
-            {option}
+            <span className="mt-6">{option}</span>
           </li>
         ))}
       </ul>

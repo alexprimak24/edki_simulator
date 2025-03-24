@@ -40,36 +40,54 @@ function Questions() {
 
   useEffect(() => {
     if (questions && currentQuestion >= questions.length) {
-      navigate('/results');
+      navigate(`/results?quantity=${numOfQuestions}&score=${score}`);
     }
-  }, [currentQuestion, navigate, questions]);
+  }, [currentQuestion, navigate, numOfQuestions, questions, score]);
 
   if (isQuering) return <Loader />;
 
   return (
-    <div>
-      <div className="">Скор: {score}</div>
-      {questions && questions[currentQuestion] ? (
-        <Question
-          key={questions[currentQuestion].id}
-          question={questions[currentQuestion].question}
-          options={questions[currentQuestion].options}
-          answer={questions[currentQuestion].answer}
-          onSubmitAnswer={handleSubmitAnswer}
-        />
-      ) : (
-        <div>There is an error with fetching questions</div>
-      )}
-      <div className="flex gap-5">
-        <button
-          disabled={currentQuestion === 0}
-          onClick={() => moveToQuestion('back')}
-          className="disabled:bg-gray-600 disabled:text-white"
-        >
-          Назад
-        </button>
-        <button onClick={() => moveToQuestion('next')}>Далі</button>
-      </div>
+    <div className="flex min-h-screen flex-col bg-[#1F1F1F] text-white">
+      <header className="border-b border-gray-700 p-4">
+        <div className="text-lg">
+          🎯Скор:{' '}
+          <span className="font-bold">
+            {score} / {questions?.length}
+          </span>
+        </div>
+      </header>
+
+      <main className="flex flex-1 flex-col items-center px-4 py-2">
+        {questions && questions[currentQuestion] ? (
+          <Question
+            key={questions[currentQuestion].id}
+            question={questions[currentQuestion].question}
+            options={questions[currentQuestion].options}
+            answer={questions[currentQuestion].answer}
+            onSubmitAnswer={handleSubmitAnswer}
+          />
+        ) : (
+          <div>There is an error with fetching questions</div>
+        )}
+      </main>
+
+      <footer className="border-t border-gray-700 p-4">
+        <div className="flex justify-center gap-5">
+          <button
+            disabled={currentQuestion === 0}
+            onClick={() => moveToQuestion('back')}
+            className="rounded bg-gray-600 px-4 py-2 text-white hover:bg-gray-500 disabled:cursor-not-allowed disabled:bg-gray-700"
+          >
+            Назад
+          </button>
+          <button
+            onClick={() => moveToQuestion('next')}
+            className="rounded bg-green-600 px-4 py-2 text-white transition-colors hover:bg-green-700"
+          >
+            Далі
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
