@@ -1,4 +1,3 @@
-import React from 'react';
 import { useMoveBack } from '../hooks/useMoveBack';
 
 function PageNotFound() {
