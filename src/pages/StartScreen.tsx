@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function StartScreen() {
   const [numOfQuestions, setNumOfQuestions] = useState(10);
   return (
-    <div className="h-screen w-full space-y-7 rounded-lg bg-[#1F1F1F] p-8 shadow-lg">
+    <div className="h-dvh w-full space-y-7 rounded-lg bg-[#1F1F1F] p-8 shadow-lg">
       <h1 className="text-3xl font-bold text-white">
         Що вершить долю людства у цьому світі? Якась незрима істота чи закон,
         подібно до Длани Господньої, що ширяє над світом? Принаймні істинно те,

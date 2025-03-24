@@ -47,7 +47,7 @@ function Questions() {
   if (isQuering) return <Loader />;
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#1F1F1F] text-white">
+    <div className="flex min-h-dvh flex-col bg-[#1F1F1F] text-white">
       <header className="border-b border-gray-700 p-4">
         <div className="text-lg">
           🎯Скор:{' '}

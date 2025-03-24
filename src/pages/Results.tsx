@@ -7,7 +7,7 @@ function Results() {
   const resultInPercentage = ((userScore / numOfQuestions) * 100).toFixed(2);
   return (
     <>
-      <div className="flex h-screen w-full flex-col items-center gap-2 rounded-lg bg-[#1F1F1F] p-8 text-white shadow-lg">
+      <div className="flex h-dvh w-full flex-col items-center gap-2 rounded-lg bg-[#1F1F1F] p-8 text-white shadow-lg">
         <span>
           Ваш результат {userScore}/{numOfQuestions} ({resultInPercentage}%)
         </span>
